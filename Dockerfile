@@ -1,5 +1,5 @@
 # Base image
-FROM node:12.18.3-alpine3.9 AS builder
+FROM node:12.18.2-alpine3.9 AS builder
 
 # Set working directory
 WORKDIR /app
@@ -9,12 +9,16 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install --force
-
 # Copy the application
 COPY . .
 
+
+
+
 # Build the application
 RUN npm run build
+
+
 
 # Create the final image
 FROM nginx:1.19.8-alpine
